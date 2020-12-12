@@ -40,9 +40,10 @@ Fires events with response.
     <button type=submit></button>
 </form>
 
-<iframe name=myIframe class=hideIfNoSrc></iframe>
+<iframe name=myIframe class=hide-if-no-src></iframe>
 ```
 
+be-formatted (or another "decorator"?) adds class, "src-set" on submit, so iframe can appear.
 
 
 ## Stream to DOM Element via hidden iframe
