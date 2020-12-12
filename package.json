@@ -3,9 +3,13 @@
   "version": "0.0.0",
   "description": "",
   "main": "form-matter.js",
+  "module": "form-matter.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "node node_modules/xtal-test/serve.js"
+  },
+  "dependencies": {
+    "xtal-decor": "0.0.20"
   },
   "devDependencies": {
     "xtal-test": "0.0.48"

@@ -27,9 +27,23 @@ Fires events with response.
 
 ## HTML Response
 
-Fires event with content
+
 
 ## Target visible iframe
+
+```html
+<form-matter if-wants-to-be=formatted req-init='{"mode": "cors"}'></form-matter>
+...
+<form method=GET action={#myPreconnectLinkId}/api/company/{company} be-formatted target=myIframe>
+    <input name=company>
+    <input type=search name=surname>
+    <button type=submit></button>
+</form>
+
+<iframe name=myIframe class=hideIfNoSrc></iframe>
+```
+
+
 
 ## Stream to DOM Element via hidden iframe
 
