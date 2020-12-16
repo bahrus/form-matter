@@ -1,7 +1,7 @@
 # form-matter
 
 ```html
-<form-matter if-wants-to-be=formatted></form-matter>
+<form-matter upgrade=form if-wants-to-be=formatted></form-matter>
 ...
 <form method=GET action="//mydomain.com/api/company/{company}" be-formatted>
     <input name=company>
@@ -51,3 +51,17 @@ be-formatted (or another "decorator"?) adds class, "src-set" on submit, so ifram
 ## JSON response
 
 Fire event and/or set prop of host container
+
+## Auto Submit
+
+```html
+<form-matter upgrade=form if-wants-to-be=formatted></form-matter>
+...
+<form method=GET action="//mydomain.com/api/company/{company}" be-formatted='{"autosubmit":true}'>
+    <input name=company>
+    <input type=search name=surname>
+</form>
+
+```
+
+Submits with every change

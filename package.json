@@ -6,12 +6,15 @@
   "module": "form-matter.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "web-dev-server --node-resolve --app-index demo/dev.html  --watch --open",
     "serve": "node node_modules/xtal-test/serve.js"
   },
   "dependencies": {
-    "xtal-decor": "0.0.20"
+    "xtal-decor": "0.0.22",
+    "xtal-element": "0.0.315"
   },
   "devDependencies": {
+    "@web/dev-server": "0.0.21",
     "xtal-test": "0.0.48"
   },
   "repository": {
