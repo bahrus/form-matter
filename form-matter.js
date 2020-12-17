@@ -47,7 +47,7 @@ export class FormMatter extends XtalDecor {
                                     return;
                             }
                             if (inBrace) {
-                                const inputEl = frm.querySelector(`[name="${token}"]`);
+                                const inputEl = frm.querySelector(`#${token}`);
                                 if (inputEl !== null) {
                                     newArr.push(inputEl.value);
                                 }

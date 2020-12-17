@@ -4,7 +4,7 @@
 <form-matter upgrade=form if-wants-to-be=formatted></form-matter>
 ...
 <form method=GET action="//mydomain.com/api/company/{company}" be-formatted>
-    <input name=company>
+    <input id=company>
     <input type=search name=surname>
     <button type=submit></button>
 </form>
@@ -15,7 +15,7 @@
 <form-matter if-wants-to-be=formatted req-init='{"mode": "cors"}'></form-matter>
 ...
 <form method=GET action={#myPreconnectLinkId}/api/company/{company} be-formatted>
-    <input name=company>
+    <input id=company>
     <input type=search name=surname>
     <button type=submit></button>
 </form>
@@ -35,7 +35,7 @@ Fires events with response.
 <form-matter if-wants-to-be=formatted req-init='{"mode": "cors"}'></form-matter>
 ...
 <form method=GET action={#myPreconnectLinkId}/api/company/{company} be-formatted target=myIframe>
-    <input name=company>
+    <input id=company>
     <input type=search name=surname>
     <button type=submit></button>
 </form>
@@ -58,7 +58,7 @@ Fire event and/or set prop of host container
 <form-matter upgrade=form if-wants-to-be=formatted></form-matter>
 ...
 <form method=GET action="//mydomain.com/api/company/{company}" be-formatted='{"autosubmit":true}'>
-    <input name=company>
+    <input id=company>
     <input type=search name=surname>
 </form>
 
