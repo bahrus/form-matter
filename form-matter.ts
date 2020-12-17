@@ -3,7 +3,8 @@ import {define} from 'xtal-element/XtalElement.js';
 
 export interface FormExtensionData {
     originalAction: string;
-    regExpArray: RegExpMatchArray;
+    decodedAction: string;
+    splitPairArr: string[];
 }
 //https://stackoverflow.com/a/43537400/3320028
 export function splitPairs(str: String, lhsDelim: string, rhsDelim: string): string[]{
@@ -22,35 +23,53 @@ export class FormMatter extends XtalDecor {
     formMap = new WeakMap<HTMLFormElement, FormExtensionData>();
     on = {
         submit: ({self}: any, e: Event) => {
-            console.log(e);
             e.preventDefault();
             const frm = e.target as HTMLFormElement;
             if(!this.formMap.has(frm)){
                 const action = frm.action;
-                //let regExpArray: RegExpMatchArray | null = null;
-                if(action){
-                    //regExpArray = action.match(balBraces);
-                    const action2 = decodeURI(action);
-                    const splitPairArr = splitPairs(action2, '{', '}');
-                    debugger;
-                }
                 const formExtensionData = {
                     originalAction: action,
-                    //regExpArray: regExpArray,
                 } as FormExtensionData;
+                if(action){
+                    const decodedAction = decodeURI(action);
+                    const splitPairArr = splitPairs(decodedAction, '{', '}');
+                    Object.assign(formExtensionData,{splitPairArr, decodedAction});
+                }
                 this.formMap.set(frm, formExtensionData);
             }
             const frmExtData = this.formMap.get(frm)!;
             if(frmExtData.originalAction){
-
+                if(frmExtData.splitPairArr !== undefined){
+                    const newArr: string[] = [];
+                    let inBrace = false;
+                    frmExtData.splitPairArr.forEach(token => {
+                        console.log(token);
+                        switch(token[0]){
+                            case '{':
+                                inBrace = true;
+                                return;
+                            case '}':
+                                inBrace = false;
+                                return;
+                        }
+                        if(inBrace){
+                            const inputEl = frm.querySelector(`[name="${token}"]`) as HTMLInputElement | null;
+                            if(inputEl !== null){
+                                newArr.push(inputEl.value);
+                            }
+                        }else{
+                            newArr.push(token);
+                        }
+                    });
+                    frm.action = newArr.join('');
+                    frm.submit();
+                }
             }
-            //frm.submit();
         }
     }
     actions = [];
 
     init = (h: HTMLElement) => {
-        console.log('iah');
     }
 }
 define(FormMatter);
