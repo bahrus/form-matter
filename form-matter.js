@@ -47,9 +47,11 @@ export class FormMatter extends XtalDecor {
                                     return;
                             }
                             if (inBrace) {
-                                const inputEl = frm.querySelector(`#${token}`);
+                                const splitToken = token.split('.');
+                                const selector = splitToken[0];
+                                const inputEl = selector.startsWith('##') ? self[selector.substr(2)] : frm.querySelector(splitToken[0]);
                                 if (inputEl !== null) {
-                                    newArr.push(inputEl.value);
+                                    newArr.push(inputEl[splitToken[1]]);
                                 }
                             }
                             else {

@@ -3,7 +3,7 @@
 ```html
 <form-matter upgrade=form if-wants-to-be=formatted></form-matter>
 ...
-<form method=GET action="//mydomain.com/api/company/{company}" be-formatted>
+<form method=GET action="//mydomain.com/api/company/{#company.value}" be-formatted>
     <input id=company>
     <input type=search name=surname>
     <button type=submit></button>
@@ -14,7 +14,7 @@
 ```html
 <form-matter if-wants-to-be=formatted req-init='{"mode": "cors"}'></form-matter>
 ...
-<form method=GET action={#myPreconnectLinkId}/api/company/{company} be-formatted>
+<form method=GET action={##myPreconnectLinkId.href}/api/company/{#company.value} be-formatted>
     <input id=company>
     <input type=search name=surname>
     <button type=submit></button>
@@ -34,7 +34,7 @@ Fires events with response.
 ```html
 <form-matter if-wants-to-be=formatted req-init='{"mode": "cors"}'></form-matter>
 ...
-<form method=GET action={#myPreconnectLinkId}/api/company/{company} be-formatted target=myIframe>
+<form method=GET action={##myPreconnectLinkId.href}/api/company/{#company.value} be-formatted target=myIframe>
     <input id=company>
     <input type=search name=surname>
     <button type=submit></button>
