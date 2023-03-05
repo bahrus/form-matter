@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@web/dev-server": "0.0.21",
-    "xtal-test": "0.0.48"
+    "xtal-test": "0.0.57"
   },
   "repository": {
     "type": "git",
